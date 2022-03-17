@@ -22,6 +22,6 @@ public:
     Cadastro();
     void cadastrarconta();
     //void cadastrarproduto();
-}
+};
 
 #endif
