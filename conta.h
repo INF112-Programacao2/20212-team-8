@@ -17,6 +17,6 @@ public:
     void contapremium();
     void alterardados();
 
-}
+};
 
 #endif
