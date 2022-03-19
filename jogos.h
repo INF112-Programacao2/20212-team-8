@@ -8,6 +8,8 @@ class Jogos{
   
   std::string _categoria;
   std::string _plataforma;
+  
+  std::string _listadejogos[][];
 
   public:
 
@@ -18,6 +20,8 @@ class Jogos{
   void maisvendidos();
   void pesquisar();
   void filtrolancamento();
+
+
 
 };
 
