@@ -13,15 +13,16 @@ private:
     std::string _endereco;
     std::string _senha;
     std::string _nomeproduto;
-    int _codigoproduto;
-    std::string _precoproduto;
+    std::string _codigoproduto;
+    double _precoproduto;
     int _quantidadeproduto;
     std::string _descricaoproduto;
 
 public:
     Cadastro();
     void cadastrarconta();
-    //void cadastrarproduto();
+    void cadastrarproduto();
+    void temcadastro();
 };
 
 #endif
