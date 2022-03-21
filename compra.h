@@ -13,8 +13,6 @@ public:
     void descontar();
     void comprar();
     void emitirboleto();
-    void cancelarcompra();
-    void atualizarcarrinho();
 
 };
 
