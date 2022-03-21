@@ -24,9 +24,9 @@ _cliente= _nome;
 }
 
 
-void Compra::cancelarcompra(){
+void Compra::emitirboleto(){
 
 
-    
+
 }
 
