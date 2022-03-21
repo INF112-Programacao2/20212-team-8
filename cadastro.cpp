@@ -26,9 +26,23 @@ void Cadastro::cadastrarconta(){
     std::cin >> _email;
     std::cin >> _endereco;
     std::cin >> _senha;
+   
+}
+
+void Cadastro::cadastarproduto(){
+    std::cout << "::Cadastrar Produto::" std::endl;
+    std::cout << "Digite o nome do produto: ";
     std::cin >> _nomeproduto;
+    std::cout << "Digite o codigo do produto: ";
     std::cin >> _codigoproduto;
+    std::cout << "Digite o preco do produto: ";
     std::cin >> _precoproduto;
+    std::cout << "Digite a quantidade do produto: ";
     std::cin >> _quantidadeproduto;
+    std::cout << "Insira a descricao do produto: ";
     std::cin >> _descricaoproduto;
+}
+
+void Cadastro::temcadastro(){
+    
 }
