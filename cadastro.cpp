@@ -1,5 +1,7 @@
 #include "cadastro.h"
 #include <iostream>
+#include <string>
+#include <fstream>
 
 Cadastro::Cadastro(){
     _nome = NULL;
@@ -29,8 +31,8 @@ void Cadastro::cadastrarconta(){
    
 }
 
-void Cadastro::cadastarproduto(){
-    std::cout << "::Cadastrar Produto::" std::endl;
+void Cadastro::cadastrarproduto(){
+    std::cout << "::Cadastrar Produto::" << std::endl;
     std::cout << "Digite o nome do produto: ";
     std::cin >> _nomeproduto;
     std::cout << "Digite o codigo do produto: ";
