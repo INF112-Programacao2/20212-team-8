@@ -57,5 +57,17 @@ void Cadastro::cadastrarproduto(){
 }
 
 void Cadastro::temcadastro(){
+    std::cout << "Para efetuar login na nossa plataforma, digite seu email e apos confirmar, digite sua senha: ";
+    
+    std::string email;
+    std::cin >> email;
+
+    std::string senha;
+    std::cin >> senha;
+
+    ifstream acc_check;
+    
+
+
     
 }
