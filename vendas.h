@@ -11,16 +11,13 @@ private:
 
   int _quantidadevendida;
 
-  int _vendadia;
-
-  int _vendames;
-
-  int _vendaano;
+  int _venda;
 
 
   public:
 
   maisvendidos(std:string);
+  Vendas();
 
 
 };
