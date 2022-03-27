@@ -2,7 +2,7 @@
 #define TPFINAL_COMPRA_H
 #include <string>
 
-class Compra{
+class Compra : public Jogos{
 private:
     std::string _numeropedido;
     std::string _data;
@@ -10,6 +10,7 @@ private:
 
 public:
     Compra();
+    virtual void exibirjogos();
     void descontar();
     void comprar();
     void emitirboleto();
