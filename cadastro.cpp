@@ -10,6 +10,22 @@ Cadastro::Cadastro(){
    char option;
    
    std::cin >> option;
+   int verifica = 0;
+
+   while(verifica == 0){
+	
+		if(option == 'S' || option == 's'){
+			verifica++;
+		}else if(option == 'N' || option == 'n'){
+			verifica++;
+		}else if(verifica == 0){
+			std::cout << "Opcao invalida!" << std::endl;
+			std::cout << "Ja possui conta? Se sim, digite 'S' para ir para o login." << std::endl;
+			std::cout << "Se nao, digite 'N' para criar uma conta." << std::endl;
+			std::cin >> option;
+		}
+   }
+
    if(option == 'S' || option == 's'){
 	  
    }else if(option == 'N' || option == 'n'){
@@ -64,6 +80,28 @@ void Cadastro::cadastrarproduto(){
     std::cin >> _quantidadeproduto;
     std::cout << "Insira a descricao do produto: ";
     std::cin >> _descricaoproduto;
+
+	std::string arquivot2("produtos.txt");
+    std::ifstream prod_entrada;
+    std::ofstream prod_saida;
+
+	prod_entrada.open(arquivot2,std::ios_base::app);
+	
+	prod_saida.open(arquivot2,std::ios::out);
+
+	prod_saida << "#";
+    prod_saida << _nomeproduto << std::endl;
+	prod_saida << "#";
+    prod_saida << _codigoproduto << std::endl;
+    prod_saida << "#";
+	prod_saida << _precoproduto << std::endl;
+    prod_saida << "#";
+	prod_saida << _quantidadeproduto << std::endl;
+    prod_saida << "#";
+	prod_saida << _descricaoproduto << std::endl;
+    
+	prod_entrada.close();
+	prod_saida.close();
 }
 
 void Cadastro::temcadastro(){
