@@ -69,39 +69,80 @@ Cadastro::Cadastro(){
 }
 
 void Cadastro::cadastrarproduto(){
+    std::cin.ignore();
     std::cout << "::Cadastrar Produto::" << std::endl;
     std::cout << "Digite o nome do produto: ";
-    std::cin >> _nomeproduto;
+    std::getline(std::cin, _nomeproduto);
     std::cout << "Digite o codigo do produto: ";
-    std::cin >> _codigoproduto;
-    std::cout << "Digite o preco do produto: ";
-    std::cin >> _precoproduto;
+    std::getline(std::cin, _codigoproduto);
+    std::cout << "Digite o preco do produto: R$";
+    std::getline(std::cin,_precoproduto);
     std::cout << "Digite a quantidade do produto: ";
-    std::cin >> _quantidadeproduto;
+    std::getline(std::cin,_quantidadeproduto);
     std::cout << "Insira a descricao do produto: ";
-    std::cin >> _descricaoproduto;
-
-	std::string arquivot2("produtos.txt");
-    std::ifstream prod_entrada;
-    std::ofstream prod_saida;
-
-	prod_entrada.open(arquivot2,std::ios_base::app);
+    std::getline(std::cin, _descricaoproduto);
 	
-	prod_saida.open(arquivot2,std::ios::out);
+	std::ifstream prod_entrada;
+	std::ofstream prod_saida;
+	
+	prod_entrada.open("produtos.txt",std::ios::in);
+	
+	if(!prod_entrada){	
 
-	prod_saida << "#";
-    prod_saida << _nomeproduto << std::endl;
-	prod_saida << "#";
-    prod_saida << _codigoproduto << std::endl;
-    prod_saida << "#";
-	prod_saida << _precoproduto << std::endl;
-    prod_saida << "#";
-	prod_saida << _quantidadeproduto << std::endl;
-    prod_saida << "#";
-	prod_saida << _descricaoproduto << std::endl;
-    
-	prod_entrada.close();
-	prod_saida.close();
+		prod_entrada.open("produtos.txt",std::ios_base::app);
+		
+		prod_saida.open("produtos.txt",std::ios::out);
+
+		prod_saida << "#";
+		prod_saida << _nomeproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _codigoproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << std::fixed << std::setprecision(2) << _precoproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _quantidadeproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _descricaoproduto << std::endl;
+		prod_saida << "+" << std::endl;
+		
+		prod_saida.close();
+	
+	}else{
+		char captura1[100][100];
+		int i = 0;
+		
+		while(true){
+			if(prod_entrada.eof()){
+				break;
+			}
+			prod_entrada.getline(captura1[i],100);
+			i++;
+		}
+		
+		prod_saida.open("produtos.txt",std::ios::out);
+		
+		for(int j = 0; j < i; j++){
+			if(j == i-1){
+				prod_saida << captura1[j];
+			}else{
+				prod_saida << captura1[j] << std::endl;
+			}
+		}
+		
+		prod_saida << "#";
+		prod_saida << _nomeproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _codigoproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << std::fixed << std::setprecision(2) << _precoproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _quantidadeproduto << std::endl;
+		prod_saida << "#";
+		prod_saida << _descricaoproduto << std::endl;
+		prod_saida << "+" << std::endl;
+		
+		prod_saida.close();
+	}
 }
 
 void Cadastro::temcadastro(){
