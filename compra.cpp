@@ -1,6 +1,6 @@
 #include <iostream>
-#include "compra.h"
-#include "conta.h"
+#include "cadastro.h"
+#include "cadastro.h"
 #include <ctime>
 #include <fstream>
 
