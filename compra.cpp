@@ -1,6 +1,6 @@
 #include <iostream>
 #include "cadastro.h"
-#include "cadastro.h"
+#include "vendas.h"
 #include <ctime>
 #include <fstream>
 
