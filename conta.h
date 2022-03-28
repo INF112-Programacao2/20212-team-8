@@ -10,7 +10,6 @@ private:
 public:
 
     Conta();
-    void temcadastro();
     void registro();
     void pedido();
     void contapadrao();
