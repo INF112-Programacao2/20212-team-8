@@ -1,6 +1,7 @@
 #include <iostream>
 #include "conta.h"
 #include <fstream>
+#include <string>
 
 Conta::Conta(){
 
