@@ -12,10 +12,18 @@ void contapadrao(){
 
 
 
-
 }
 
 void contapremium(){
+
+
+
+
+}
+
+
+void alterardados(){
+
 
 
     
