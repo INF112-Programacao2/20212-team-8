@@ -5,16 +5,9 @@
 class Conta {
 private:
 
-    std::string _status;
-
 public:
 
-    Conta();
-    void registro();
-    void pedido();
-    void contapadrao();
-    void contapremium();
-    void alterardados();
+    virtual void conta() = 0;
 
 };
 
