@@ -47,21 +47,14 @@ Cadastro::Cadastro(){
 	
 	acc_saida.open(arquivot1,std::ios::out);
 	
-	acc_saida << "#";
+	
     acc_saida << _nome << std::endl;
-	acc_saida << "#";
     acc_saida << _genero << std::endl;
-    acc_saida << "#";
 	acc_saida << _datanascimento << std::endl;
-    acc_saida << "#";
 	acc_saida << _cpf << std::endl;
-    acc_saida << "#";
 	acc_saida << _telefone << std::endl;
-    acc_saida << "#";
-	acc_saida << _email << std::endl;
-    acc_saida << "#";
+	acc_saida << _email << std::endl;  
 	acc_saida << _endereco << std::endl;
-    acc_saida << "#";
 	acc_saida << _senha << std::endl;
     
     acc_saida.close();
@@ -93,15 +86,10 @@ void Cadastro::cadastrarproduto(){
 		
 		prod_saida.open("produtos.txt",std::ios::out);
 
-		prod_saida << "#";
 		prod_saida << _nomeproduto << std::endl;
-		prod_saida << "#";
 		prod_saida << _codigoproduto << std::endl;
-		prod_saida << "#";
-		prod_saida << std::fixed << std::setprecision(2) << _precoproduto << std::endl;
-		prod_saida << "#";
+		prod_saida << _precoproduto << std::endl;
 		prod_saida << _quantidadeproduto << std::endl;
-		prod_saida << "#";
 		prod_saida << _descricaoproduto << std::endl;
 		prod_saida << "+" << std::endl;
 		
@@ -129,15 +117,10 @@ void Cadastro::cadastrarproduto(){
 			}
 		}
 		
-		prod_saida << "#";
 		prod_saida << _nomeproduto << std::endl;
-		prod_saida << "#";
 		prod_saida << _codigoproduto << std::endl;
-		prod_saida << "#";
-		prod_saida << std::fixed << std::setprecision(2) << _precoproduto << std::endl;
-		prod_saida << "#";
+		prod_saida << _precoproduto << std::endl;	
 		prod_saida << _quantidadeproduto << std::endl;
-		prod_saida << "#";
 		prod_saida << _descricaoproduto << std::endl;
 		prod_saida << "+" << std::endl;
 		
@@ -145,10 +128,8 @@ void Cadastro::cadastrarproduto(){
 	}
 }
 
-void Cadastro::temcadastro(){
+bool Cadastro::login(){
 	char captura[200];
-	char teste[200];
-	char *t;
 	bool acc_vrfy = true;
 	std::cout << "Para efetuar login na nossa plataforma, digite seu email e apos confirmar, digite sua senha: ";
     
@@ -159,6 +140,13 @@ void Cadastro::temcadastro(){
     std::cin >> senha;
 
     std::ifstream acc_check;
+
+	if(email == "admin@adm.com" && senha == "admin4012"){
+		std::cout << "Login de conta ADM realizado com sucesso!" << std::endl;
+		std::cout << "Transferindo para a pagina de gerenciamento da loja..." << std::endl;
+		return false;
+	}
+
     acc_check.open("conta.txt",std::ios::in);
 	
 		
@@ -166,25 +154,14 @@ void Cadastro::temcadastro(){
 		acc_check.getline(captura,200);
 
 		if(i == 5){
-			t = strtok(captura,"#");		//Separação da string em tokens
-					
-			while(t != NULL){
-				strcpy(teste, t);		//Captura do nome
-				t = strtok(NULL,"#");
-			}
 			
-			if(email != teste){
+			if(email != captura){
 				acc_vrfy = false;
 			}
+
 		}if(i == 7){
-			t = strtok(captura,"#");		//Separação da string em tokens
-					
-			while(t != NULL){
-				strcpy(teste, t);		//Captura do nome
-				t = strtok(NULL,"#");
-			}
 	
-			if(senha != teste && acc_vrfy != false){
+			if(senha != captura && acc_vrfy != false){
 				acc_vrfy = false;
 			}
 			
@@ -201,5 +178,6 @@ void Cadastro::temcadastro(){
 			acc_check.open("conta.txt",std::ios::in);
 		}
 	}
-	
+
+	return 0;
 }

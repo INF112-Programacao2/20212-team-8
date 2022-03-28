@@ -14,15 +14,15 @@ private:
     std::string _senha;
     std::string _nomeproduto;
     std::string _codigoproduto;
-    double _precoproduto;
-    int _quantidadeproduto;
+    std::string _precoproduto;
+    std::string _quantidadeproduto;
     std::string _descricaoproduto;
 
 public:
     Cadastro();
     void cadastrarconta();
     void cadastrarproduto();
-    void temcadastro();
+    bool login();
 };
 
 #endif
