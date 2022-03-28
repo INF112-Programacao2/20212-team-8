@@ -25,7 +25,6 @@ void contapremium(){
 void alterardados(){
 
 
-
     std::string arquivoc("conta.txt");
     std::ifstream acc_entrada;
     std::ofstream acc_saida;
