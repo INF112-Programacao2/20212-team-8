@@ -5,12 +5,12 @@
 class Desconto{
 private:
 
-    int _desconto;
+    double _desconto;
 
     
  public:
 
-    Desconto(int desconto);
+    Desconto();
 
     void descontar();
 
