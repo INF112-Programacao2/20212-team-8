@@ -1,8 +1,8 @@
 #include <iostream>
-#include "cadastro.h"
-#include "vendas.h"
 #include "compra.h"
 #include <ctime>
+#include <string>
+#include <cstdlib>
 #include <fstream>
 
 Compra::Compra(){
@@ -16,8 +16,6 @@ void Compra::exibirjogos(){
     std::cout << "::Jogos disponiveis em nossa plataforma::" << std::endl;
     
     char leitura[100];
-    char leitura2[100];
-    char *c;
     int n = 1;
     int g = 0;
 
@@ -27,13 +25,7 @@ void Compra::exibirjogos(){
     for(int i = 0; i < n; i++){
         view_gamelist.getline(leitura,100);
         if(i == g*6){
-            c = strtok(leitura,"#");		//Separação da string em tokens
-					
-			while(t != NULL){
-				strcpy(leitura2, c);		//Captura do nome
-				c = strtok(NULL,"#");
-			}
-            std::cout << g << "- " << leitura2 << std::endl;
+            std::cout << g << "- " << leitura << std::endl;
             g++;
         }
         n++;
@@ -42,84 +34,50 @@ void Compra::exibirjogos(){
         }
     }
     
-
 }
 
 void Compra::comprar(){
     int opcao;
+    char leitura[100];
+    char d;
+    int n = 1;
+    
+    std::string nome;
+    std::string valor;
+    std::ifstream view_gamelist;
+    std::ifstream acc_saldo;
+    std::ofstream acc_saldout;
 
     while(true){
         std::cout << "Digite o numero do jogo que deseja comprar: ";
         std::cin >> opcao;
         std::cin.ignore(); 
-        
-        char leitura[100];
-        char leitura2[100];
-        char *c;
-        char d;
-        std::string nome;
-        std::string valor;
-
-
-        std::ifstream view_gamelist;
-        std::ifstream acc_saldo;
-        std::ofstream acc_saldout;
 
         std::cout << "Encaminhando para a pagina..." << std::endl;
+        
         view_gamelist.open("produtos.txt",std::ios::in);
         for(int i = 0; i <= n; i++){
             view_gamelist.getline(leitura,100);
-            if(i == opcao*6){
-                c = strtok(leitura,"#");		//Separação da string em tokens
-                        
-                while(t != NULL){
-                    strcpy(leitura2, c);		//Captura do nome
-                    c = strtok(NULL,"#");
-                }
 
-                std::cout << "Nome: " << leitura2 << std::endl;
-                nome = leitura2;
-                
-            }if(i == (opcao*6)+1){
-                c = strtok(leitura,"#");		//Separação da string em tokens
-                        
-                while(t != NULL){
-                    strcpy(leitura2, c);		//Captura do nome
-                    c = strtok(NULL,"#");
-                }
-
-                std::cout << "Codigo do jogo: " << leitura2 << std::endl;
+            std::cout << "Nome: " << leitura << std::endl;
+            nome = leitura;
+          
+            if(i == (opcao*6)+1){
+               
+                std::cout << "Codigo do jogo: " << leitura << std::endl;
                 
             }if(i == (opcao*6)+2){
-                c = strtok(leitura,"#");		//Separação da string em tokens
-                        
-                while(t != NULL){
-                    strcpy(leitura2, c);		//Captura do nome
-                    c = strtok(NULL,"#");
-                }
 
-                std::cout << "R$ " << leitura2 << std::endl;
-                valor = leitura2;
+                std::cout << "R$ " << leitura << std::endl;
+                valor = leitura;
 
             }if(i == (opcao*6)+3){
-                c = strtok(leitura,"#");		//Separação da string em tokens
-                        
-                while(t != NULL){
-                    strcpy(leitura2, c);		//Captura do nome
-                    c = strtok(NULL,"#");
-                }
 
-                std::cout << "Em estoque: " << leitura2 << std::endl;
+                std::cout << "Em estoque: " << leitura << std::endl;
                 
             }if(i == (opcao*6)+4){
-                c = strtok(leitura,"#");		//Separação da string em tokens
-                        
-                while(t != NULL){
-                    strcpy(leitura2, c);		//Captura do nome
-                    c = strtok(NULL,"#");
-                }
 
-                std::cout << "Descricao: " << leitura2 << std::endl; 
+                std::cout << "Descricao: " << leitura << std::endl; 
                 
             }
         }
@@ -142,20 +100,18 @@ void Compra::comprar(){
                 }
         }
         
-        if(option == 'S' || option == 's'){
+        if(d == 'S' || d == 's'){
             
             acc_saldo.open("compra.txt",std::ios_base::app);
             acc_saldout.open("compra.txt",std::ios::out);
 
-            acc_saldout << "#";
             acc_saldout << nome << std::endl;
-            acc_saldout << "#";
             acc_saldout << valor << std::endl;
 
             acc_saldout.close();
             break;
 
-        }else if(option == 'N' || option == 'n'){
+        }else if(d == 'N' || d == 'n'){
             continue;
         }
     }
@@ -163,9 +119,8 @@ void Compra::comprar(){
 
 void Compra::pedido(){
     char comentario1[100];
-    char comentario2[100];
     char comentario3[100];
-    char *k;
+
     std::string nome;
     std::string valor;
 
@@ -177,16 +132,11 @@ void Compra::pedido(){
 
     acc_check1.open("conta.txt",std::ios::in);
 
-    acc_check1.getline(comentario1,100);
+    acc_check1.getline(comentario3,100);
 
-    k = strtok(comentario1,"#");		//Separação da string em tokens
-					
-    while(k != NULL){
-        strcpy(comentario3, k);		//Captura do nome
-        k = strtok(NULL,"#");
-    }
+    _cliente = comentario3;
 
-    acc_check.close();
+    acc_check1.close();
 
     acc_check1.open("compra.txt");
 
@@ -195,32 +145,23 @@ void Compra::pedido(){
     while(h < 2){
         acc_check1.getline(comentario1,100);
         
-        k = strtok(comentario1,"#");		//Separação da string em tokens
-                        
-        while(k != NULL){
-            strcpy(comentario2, k);		//Captura do nome
-            k = strtok(NULL,"#");
-        }
-
         if(h == 0){
-            nome = comentario2;
+            nome = comentario1;
         }if(h == 1){
-            valor = comentario2;
+            valor = comentario1;
         }
         h++;
     }
 
-    acc_check.open("pedido.txt",std::ios_base::app);
+    acc_check1.open("pedido.txt",std::ios_base::app);
+    acc_out1.open("pedido.txt",std::ios::out);
 
-    acc_out1 << "#";
     acc_out1 << _numeropedido << std::endl;
-    acc_out1 << "#";
-    acc_out1 << comentario3 << std::endl;
-    acc_out1 << "#";
+    acc_out1 << _cliente << std::endl;
     acc_out1 << nome << std::endl;
-    acc_out1 << "#";
     acc_out1 << valor << std::endl;
     
+    acc_out1.close();
 }
 
 
@@ -239,34 +180,27 @@ void Compra::emitirrecibo(){
     acc_entrada.open("pedido.txt",std::ios::in);
 
     while(h1 < 4){
-        acc_check1.getline(comentario1,100);
-        
-        k = strtok(comentario1,"#");		//Separação da string em tokens
-                        
-        while(k != NULL){
-            strcpy(comentario2, k);		//Captura do nome
-            k = strtok(NULL,"#");
-        }
+        acc_entrada.getline(comentario1,100);
 
         if(h1 == 0){
-            nome = comentario2;
+           _cliente = comentario1;
         }if(h1 == 1){
-            precoproduto = comentario2;
+            precoproduto = comentario1;
         }if(h1 == 2){
-            nomepedido = comentario2;
+            nomepedido = comentario1;
         }if(h1 == 3){
-            numeropedido = comentario2;
+            numeropedido = comentario1;
         }
         h1++;
     }
 
-    acc_check1.close();
+    acc_entrada.close();
 
     acc_entrada.open("recibo.txt",std::ios_base::app);
     acc_saida.open("recibo.txt",std::ios::in);
 
     acc_saida << "Olá ";
-    acc_saida << nome << std::endl;
+    acc_saida << _cliente << std::endl;
     acc_saida << "Obrigado por comprar na nossa loja." << std::endl;
     acc_saida << "Numero do pedido: " << numeropedido << std::endl;
     acc_saida << "Nome do produto: " << nomepedido << std::endl;
