@@ -5,7 +5,8 @@
 class Estoque{
  private:
 
-  int _estoque;
+  char _nomeproduto[5][50];
+  int _estoque[5];
 
 
  public:
