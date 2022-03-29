@@ -6,13 +6,14 @@ class Desconto{
 private:
 
     double _desconto;
+	bool _verifica;
 
     
  public:
 
-    Desconto(bool verifica);
+    Desconto(std::string verifica);
 
-    void descontar(bool verifica);
+    void descontar();
 
 };
 
