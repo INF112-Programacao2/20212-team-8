@@ -5,14 +5,14 @@
 
 class Compra : public Jogos{
 private:
-    std::string _numeropedido;
+    int _numeropedido;
     std::string _data;
     std::string _cliente;
 
 public:
     Compra();
     virtual void exibirjogos();
-    void comprar();
+    bool comprar();
     void pedido();
     void emitirrecibo();
 

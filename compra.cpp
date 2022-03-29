@@ -4,10 +4,11 @@
 #include <string>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
 
 Compra::Compra(){
 
-    _numeropedido = "nulo";
+    _numeropedido = 0;
     _data = "nulo";    
     _cliente = "nulo";
 }
@@ -22,21 +23,28 @@ void Compra::exibirjogos(){
     std::ifstream view_gamelist;
 
     view_gamelist.open("produtos.txt",std::ios::in);
-    for(int i = 0; i < n; i++){
-        view_gamelist.getline(leitura,100);
-        if(i == g*6){
-            std::cout << g << "- " << leitura << std::endl;
-            g++;
-        }
-        n++;
-        if(view_gamelist.eof()){
-            break;
-        }
-    }
+	
+	 if(!view_gamelist){
+        std::cout << "Loja encontra-se sem produtos, em breve disponibilizaremos novos jogos..." << std::endl;
+    }else{
+	
+		for(int i = 0; i < n; i++){
+			if(view_gamelist.eof()){
+				break;
+			}
+	
+			view_gamelist.getline(leitura,100);
+			if(i == g*6){
+				std::cout << g << "- " << leitura << std::endl;
+				g++;
+			}
+			n++;
+		}
+	}
     
 }
 
-void Compra::comprar(){
+bool Compra::comprar(){
     int opcao;
     char leitura[50];
     char d;
@@ -60,12 +68,17 @@ void Compra::comprar(){
         
         view_gamelist.open("produtos.txt",std::ios::in);
         for(int i = 0; i <= n; i++){
+			if(view_gamelist.eof()){
+				break;
+			}
             view_gamelist.getline(leitura,50);
-
-            std::cout << "Nome: " << leitura << std::endl;
-            nome = leitura;
+			
+			if(i == (opcao*6)){
+				
+				std::cout << "Nome: " << leitura << std::endl;
+				nome = leitura;
           
-            if(i == (opcao*6)+1){
+            }if(i == (opcao*6)+1){
                
                 std::cout << "Codigo do jogo: " << leitura << std::endl;
                 
@@ -83,10 +96,14 @@ void Compra::comprar(){
                 std::cout << "Descricao: " << leitura << std::endl; 
                 
             }
+			n++;
         }
 
         std::cout << "Deseja efetuar a compra?" << std::endl;
-        int verifica = 0;
+		std::cout << "Digite 'S' para efetuar a compra" << std::endl;
+        std::cout << "Se nao, digite 'N' para cancelar a compra e voltar a pagina inicial." << std::endl;
+        
+		int verifica = 0;
         std::cin >> d;
 
         while(verifica == 0){
@@ -97,8 +114,8 @@ void Compra::comprar(){
                     verifica++;
                 }else if(verifica == 0){
                     std::cout << "Opcao invalida!" << std::endl;
-                    std::cout << "Ja possui conta? Se sim, digite 'S' para ir para o login." << std::endl;
-                    std::cout << "Se nao, digite 'N' para criar uma conta." << std::endl;
+                    std::cout << "Digite 'S' para efetuar a compra" << std::endl;
+                    std::cout << "Se nao, digite 'N' para cancelar a compra e voltar a pagina inicial." << std::endl;
                     std::cin >> d;
                 }
         }
@@ -108,25 +125,25 @@ void Compra::comprar(){
             std::cout << "Quantas unidades?" << std::endl;
             std::cin >> quant;
 
-        while(quant < 1 || quant > quantidade){
-            std::cout << "Erro! Digite um valor valido de 1 a " << quantidade << ".";
-            std::cin >> quant; 
-        }
+			while(quant < 1 || quant > quantidade){
+				std::cout << "Erro! Digite um valor valido de 1 a " << quantidade << ".";
+				std::cin >> quant; 
+			}
 
-        totalvalor = quant*valor;
+			totalvalor = quant*valor;
 
-        acc_saldo.open("compra.txt",std::ios_base::app);
-        acc_saldout.open("compra.txt",std::ios::out);
+			acc_saldo.open("compra.txt",std::ios_base::app);
+			acc_saldout.open("compra.txt",std::ios::out);
 
-        acc_saldout << nome << std::endl;
-        acc_saldout << quant << std::endl;
-        acc_saldout << totalvalor << std::endl;
+			acc_saldout << nome << std::endl;
+			acc_saldout << quant << std::endl;
+			acc_saldout << std::fixed << std::setprecision(2) << totalvalor << std::endl;
 
-        acc_saldout.close();
-        break;
+			acc_saldout.close();
+			return true;
 
         }else if(d == 'N' || d == 'n'){
-            continue;
+           return false;
         }
     }
 }
@@ -141,6 +158,8 @@ void Compra::pedido(){
 
     srand(time(0));
     _numeropedido = 1+rand()%100;
+	
+	std::string numeropedido(std::to_string(_numeropedido));
 
     std::ifstream acc_check1;
     std::ofstream acc_out1;
@@ -164,16 +183,28 @@ void Compra::pedido(){
             nome = comentario1;
         }if(h == 1){
             quantidade = comentario1;
-        }if(h == 3){
+        }if(h == 2){
             valor = comentario1;
         }
 
         h++;
     }
-
+	
+	std::cout << "::Pedido::" << std::endl;
+	std::cout << "Numero do pedido: ";
+	std::cout << numeropedido << std::endl;
+	std::cout << "Cliente: ";
+	std::cout << _cliente << std::endl;
+	std::cout << "Nome: ";
+	std::cout << nome << std::endl;
+	std::cout << "Quantidade: ";
+	std::cout << quantidade << "x" << std::endl;
+	std::cout << "Preco: R$";
+	std::cout << valor << std::endl;
+	
     acc_check1.open("pedido.txt",std::ios_base::app);
     acc_out1.open("pedido.txt",std::ios::out);
-
+	
     acc_out1 << _numeropedido << std::endl;
     acc_out1 << _cliente << std::endl;
     acc_out1 << nome << std::endl;
