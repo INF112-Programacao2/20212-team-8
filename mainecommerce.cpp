@@ -88,7 +88,7 @@ int main(){
 					cp2.exibirjogos();
 					cp2.comprar();
 					
-					if(verf == true){
+					if(verf1 == true){
 						Desconto d2(status);
 						d2.descontar();
 						
@@ -212,7 +212,7 @@ int main(){
 		
 		while(true){
 			std::cout << "Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
-			std::cout << "Ver o caixa (a); Ver o estoque (b); Cadastrar produto (c)" << std::endl;
+			std::cout << "Ver o caixa (a); Cadastrar produto (b)" << std::endl;
 			std::cin >> option2;
 			
 			while(verifica2 == 0){
@@ -220,11 +220,9 @@ int main(){
 					verifica2++;
 				}else if(option2 == 'b'){
 					verifica2++;
-				}else if(option2 == 'c'){
-					verifica2++;
 				}else if(verifica2 == 0){
 					std::cout << "Erro!Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
-					std::cout << "Ver o caixa (a); Ver o estoque (b)" << std::endl;
+					std::cout << "Ver o caixa (a); Cadastrar produto (b)" << std::endl;
 					std::cin >> option2;
 				}
 			}
@@ -235,10 +233,6 @@ int main(){
 				cx.registro();
 				
 				
-			}else if(option2 == 'b'){
-				Estoque etq;
-				
-				etq.fluxoproduto();
 			}else if(option2 == 'c'){
 				c1.cadastrarproduto();
 			}
