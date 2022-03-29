@@ -127,7 +127,7 @@ void Cadastro::cadastrarproduto(){
 		prod_saida << _precoproduto << std::endl;
 		prod_saida << _quantidadeproduto << std::endl;
 		prod_saida << _descricaoproduto << std::endl;
-		prod_saida << "+" << std::endl;
+		prod_saida << "+" <<std::endl;
 		
 		prod_saida.close();
 	
