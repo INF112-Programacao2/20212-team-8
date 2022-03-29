@@ -29,16 +29,50 @@ Cadastro::Cadastro(){
    if(option == 'S' || option == 's'){
 	  
    }else if(option == 'N' || option == 'n'){
+	char option1;   
+	   
 	std::cin.ignore();
-	std::getline(std::cin, _nome); 
+	std::cout << "Digite os dados correspondentes:" << std::endl;
+	std::cout << "Nome: ";
+	std::getline(std::cin, _nome);
+	std::cout << "Genero: ";
 	std::getline(std::cin,_genero);
+	std::cout << "Data de nascimento: ";
 	std::getline(std::cin, _datanascimento);
+	std::cout << "CPF: ";
 	std::getline(std::cin, _cpf);
+	std::cout << "Telefone: ";
 	std::getline(std::cin, _telefone); 
+	std::cout << "Email: ";
 	std::getline(std::cin, _email); 
+	std::cout << "Endereco: ";
 	std::getline(std::cin, _endereco);
+	std::cout << "Senha: ";
 	std::getline(std::cin, _senha);
-	_status = "Normal";
+	std::cout << "Deseja ser premium? 'S' ou 'N'" << std::endl;
+	std::cin >> option1;
+	
+	while(verifica == 0){
+	
+		if(option1 == 'S' || option1 == 's'){
+			verifica++;
+		}else if(option1 == 'N' || option1 == 'n'){
+			verifica++;
+		}else if(verifica == 0){
+			std::cout << "Opcao invalida!" << std::endl;
+			std::cout << "Deseja ser premium? 'S' ou 'N'" << std::endl;
+			
+			std::cin >> option1;
+		}
+   }
+    
+   std::cin.ignore();
+   
+   if(option1 == 'S' || option1 == 's'){
+	  _status = "premium";
+   }else if(option1 == 'N' || option1 == 'n'){
+	  _status = "normal";
+   }
    
     std::string arquivot1("conta.txt");
     std::ifstream acc_entrada;
@@ -152,7 +186,12 @@ bool Cadastro::login(){
     acc_check.open("conta.txt",std::ios::in);
 	
 		
-	for(int i = 0; i < 8; i++){	
+	for(int i = 0; i < 8; i++){
+		if(email == "admin@adm.com" && senha == "admin4012"){
+			std::cout << "Login de conta ADM realizado com sucesso!" << std::endl;
+			std::cout << "Transferindo para a pagina de gerenciamento da loja..." << std::endl;
+			return false;
+		}
 		acc_check.getline(captura,200);
 
 		if(i == 5){
@@ -170,6 +209,8 @@ bool Cadastro::login(){
 		}if(i == 7 && acc_vrfy == true){
 			std::cout << "Login realizado com sucesso!" << std::endl;
 			std::cout << "Transferindo para a pagina inicial..." << std::endl;
+			acc_check.close();
+			return true;
 		}else if(i == 7 && acc_vrfy != true){
 			std::cout << "Email ou senha incorretos! Tente novamente." << std::endl;
 			acc_check.close();
