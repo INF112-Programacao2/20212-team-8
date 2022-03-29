@@ -74,42 +74,73 @@ void Cpremium::alterardados1(){
     std::cout << "(6) Email" << std::endl;
     std::cout << "(7) Endereco" << std::endl;
     std::cout << "(8) Senha" << std::endl;
-    std::cout << "Caso queira continuar alterando dados, digite 's', senao, digite 'n'" << std::endl;
 
     std::cin >> i;
+	std::cin.ignore();
 
     while(true){
         while(i < 1 || i > 8){
             std::cout << "Erro! Digite valores de 1 a 8 para definir uma alteracao" << std::endl;
             std::cin >> i;
+			std::cin.ignore();
         }
 
         if(i == 1){
-            std::cin >> _nome;
+			std::cout << "Digite o novo nome: ";
+            std::getline(std::cin, _nome);
+			
         }else if(i == 2){
-            std::cin >> _genero;
+			std::cout << "Digite o novo genero: ";
+            std::getline(std::cin, _genero);
+			
         }else if(i == 3){
-            std::cin >> _datanascimento;
+			std::cout << "Digite a nova data de nascimento: ";
+            std::getline(std::cin, _datanascimento);
+			
         }else if(i == 4){
-            std::cin >> _cpf;
+			std::cout << "Digite o novo cpf: ";
+            std::getline(std::cin, _cpf);
+			
         }else if(i == 5){
-            std::cin >> _telefone;
+			std::cout << "Digite o novo telefone: ";
+            std::getline(std::cin, _telefone);
+			
         }else if(i == 6){
-            std::cin >> _email;
+			std::cout << "Digite o novo email: ";
+            std::getline(std::cin, _email);
+
         }else if(i == 7){
-            std::cin >> _endereco;
+			std::cout << "Digite o novo endereco: ";
+            std::getline(std::cin, _endereco);
+			
         }else if(i == 8){
-            std::cin >> _senha;
+			std::cout << "Digite a nova senha: ";
+            std::getline(std::cin, _senha);
         } 
 
+         
+		std::cout << "Caso queira continuar alterando dados, digite 's', senao, digite 'n'" << std::endl;
         std::cin >> op;
+		std::cin.ignore();
 
-        while(op != 's' || op != 'n'){
-            std::cout << "Erro! Digite 's' para continuar alteracoes ou 'n' para encerrar alteracoes" << std::endl;
+        while(op != 's' && op != 'n'){
+            std::cout << "Erro! Digite 's' para continuar alteracoes ou 'n' para encerrar alteracoes"<< std::endl;
             std::cin >> op;
+			std::cin.ignore();
         }
 
         if(op == 's'){
+			std::cout << "Deseja alterar qual dado? Digite a opcao correspondente." << std::endl;
+			std::cout << "(1) Nome" << std::endl;
+			std::cout << "(2) Genero" << std::endl;
+			std::cout << "(3) Data de nascimento" << std::endl;
+			std::cout << "(4) CPF" << std::endl;
+			std::cout << "(5) Telefone" << std::endl;
+			std::cout << "(6) Email" << std::endl;
+			std::cout << "(7) Endereco" << std::endl;
+			std::cout << "(8) Senha" << std::endl;
+			std::cin >> i;
+			std::cin.ignore();
             continue;
         }else if(op == 'n'){
             break;
