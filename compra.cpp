@@ -38,16 +38,19 @@ void Compra::exibirjogos(){
 
 void Compra::comprar(){
     int opcao;
-    char leitura[100];
+    char leitura[50];
     char d;
     int n = 1;
+    double quant;
+    double totalvalor;
     
     std::string nome;
-    std::string valor;
+    double valor;
+    double quantidade;
     std::ifstream view_gamelist;
     std::ifstream acc_saldo;
     std::ofstream acc_saldout;
-
+    
     while(true){
         std::cout << "Digite o numero do jogo que deseja comprar: ";
         std::cin >> opcao;
@@ -57,7 +60,7 @@ void Compra::comprar(){
         
         view_gamelist.open("produtos.txt",std::ios::in);
         for(int i = 0; i <= n; i++){
-            view_gamelist.getline(leitura,100);
+            view_gamelist.getline(leitura,50);
 
             std::cout << "Nome: " << leitura << std::endl;
             nome = leitura;
@@ -69,10 +72,10 @@ void Compra::comprar(){
             }if(i == (opcao*6)+2){
 
                 std::cout << "R$ " << leitura << std::endl;
-                valor = leitura;
+                valor = atof(leitura);
 
             }if(i == (opcao*6)+3){
-
+                quantidade = atof(leitura);
                 std::cout << "Em estoque: " << leitura << std::endl;
                 
             }if(i == (opcao*6)+4){
@@ -102,14 +105,25 @@ void Compra::comprar(){
         
         if(d == 'S' || d == 's'){
             
-            acc_saldo.open("compra.txt",std::ios_base::app);
-            acc_saldout.open("compra.txt",std::ios::out);
+            std::cout << "Quantas unidades?" << std::endl;
+            std::cin >> quant;
 
-            acc_saldout << nome << std::endl;
-            acc_saldout << valor << std::endl;
+        while(quant < 1 || quant > quantidade){
+            std::cout << "Erro! Digite um valor valido de 1 a " << quantidade << ".";
+            std::cin >> quant; 
+        }
 
-            acc_saldout.close();
-            break;
+        totalvalor = quant*valor;
+
+        acc_saldo.open("compra.txt",std::ios_base::app);
+        acc_saldout.open("compra.txt",std::ios::out);
+
+        acc_saldout << nome << std::endl;
+        acc_saldout << quant << std::endl;
+        acc_saldout << totalvalor << std::endl;
+
+        acc_saldout.close();
+        break;
 
         }else if(d == 'N' || d == 'n'){
             continue;
@@ -123,6 +137,7 @@ void Compra::pedido(){
 
     std::string nome;
     std::string valor;
+    std::string quantidade;
 
     srand(time(0));
     _numeropedido = 1+rand()%100;
@@ -142,14 +157,17 @@ void Compra::pedido(){
 
     int h = 0;
 
-    while(h < 2){
+    while(h < 3){
         acc_check1.getline(comentario1,100);
         
         if(h == 0){
             nome = comentario1;
         }if(h == 1){
+            quantidade = comentario1;
+        }if(h == 3){
             valor = comentario1;
         }
+
         h++;
     }
 
@@ -159,6 +177,7 @@ void Compra::pedido(){
     acc_out1 << _numeropedido << std::endl;
     acc_out1 << _cliente << std::endl;
     acc_out1 << nome << std::endl;
+    acc_out1 << quantidade << std::endl;
     acc_out1 << valor << std::endl;
     
     acc_out1.close();
