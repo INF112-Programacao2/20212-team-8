@@ -15,23 +15,48 @@ Cnormal::Cnormal(){
         acc_op.getline(captura,200);
         if(i == 0){
             _nome = captura;
-        }if(i == 1){
+        }
+        
+        
+        if(i == 1){
             _genero = captura;
-        }if(i == 2){
+        }
+        
+        
+        if(i == 2){
             _datanascimento = captura;
-        }if(i == 3){
+        }
+        
+        
+        if(i == 3){
             _cpf = captura;
-        }if(i == 4){
+        }
+        
+        
+        if(i == 4){
             _telefone = captura;
-        }if(i == 5){
+        }
+        
+        
+        if(i == 5){
             _email = captura;
-        }if(i == 6){
+        }
+        
+        
+        if(i == 6){
             _endereco = captura;
-        }if(i == 7){
+        }
+        
+        if(i == 7){
             _senha = captura;
-        }if(i == 8){
+        }
+        
+        
+        if(i == 8){
             _status = captura;
         }
+    
+    
     }
 
     acc_op.close();
@@ -89,31 +114,52 @@ void Cnormal::alterardados(){
 			std::cout << "Digite o novo nome: ";
             std::getline(std::cin, _nome);
 			
-        }else if(i == 2){
+        
+        }
+        
+        
+        else if(i == 2){
 			std::cout << "Digite o novo genero: ";
             std::getline(std::cin, _genero);
 			
-        }else if(i == 3){
+        }
+        
+        
+        else if(i == 3){
 			std::cout << "Digite a nova data de nascimento: ";
             std::getline(std::cin, _datanascimento);
 			
-        }else if(i == 4){
+        }
+        
+        
+        else if(i == 4){
 			std::cout << "Digite o novo cpf: ";
             std::getline(std::cin, _cpf);
 			
-        }else if(i == 5){
+        }
+        
+        
+        else if(i == 5){
 			std::cout << "Digite o novo telefone: ";
             std::getline(std::cin, _telefone);
 			
-        }else if(i == 6){
+        }
+        
+        
+        else if(i == 6){
 			std::cout << "Digite o novo email: ";
             std::getline(std::cin, _email);
 
-        }else if(i == 7){
+        }
+        
+        
+        else if(i == 7){
 			std::cout << "Digite o novo endereco: ";
             std::getline(std::cin, _endereco);
 			
-        }else if(i == 8){
+        }
+        
+        else if(i == 8){
 			std::cout << "Digite a nova senha: ";
             std::getline(std::cin, _senha);
         } 
@@ -143,9 +189,14 @@ void Cnormal::alterardados(){
 			std::cin >> i;
 			std::cin.ignore();
             continue;
-        }else if(op == 'n'){
+        }
+        
+        
+        else if(op == 'n'){
             break;
         } 
+    
+    
     }
 
     std::ofstream acc_change;
@@ -163,4 +214,6 @@ void Cnormal::alterardados(){
     acc_change << _status << std::endl;
 
     acc_change.close();
+
+
 }
