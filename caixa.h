@@ -5,13 +5,11 @@ class Caixa {
 private:
     
     double _saldo;
-    double _fluxocaixa;
 
 public:
     
     Caixa();
     void registro();
-
 
 };
 
