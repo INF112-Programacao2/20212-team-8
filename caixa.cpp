@@ -34,9 +34,15 @@ void Caixa::registro(){
 
       if(h == 0){
          nome = dados;
-      }if(h == 1){
+      }
+      
+      
+      if(h == 1){
          quantidade = atof(dados);
-      }if(h == 2){
+      }
+      
+      
+      if(h == 2){
          valor = atof(dados);
       }
 
@@ -60,17 +66,24 @@ void Caixa::registro(){
 
       acc_regout.close();
 
-   }else{
+   }
+   
+   
+   else{
+      
       char captura[100][100];
-	  char captura2[100];
+	   char captura2[100];
       int i = 0;
-	  char *t;
+	   char *t;
 	  
 		while(true){
-			if(acc_reg.eof()){
+			
+         if(acc_reg.eof()){
 				break;
 			}
-			acc_reg.getline(captura[i],100);
+			
+         acc_reg.getline(captura[i],100);
+         
          if(i == 0){
 			t = strtok(captura[i],"Saldo em caixa: R$");		//Separação da string em tokens
 			
@@ -78,10 +91,14 @@ void Caixa::registro(){
 				strcpy(captura2, t);		//Captura do nome
 				t = strtok(NULL,"Saldo em caixa: R$");
 			}
+
             _saldo = atof(captura2);
+         
          }
-			i++;
-		}
+			
+         i++;
+		
+      }
 	  
 		  acc_reg.close();
 		  
@@ -89,19 +106,27 @@ void Caixa::registro(){
 			
 		  acc_regout.open("registro.txt",std::ios::out);
 		
-		for(int j = 0; j < i; j++){
+	   for(int j = 0; j < i; j++){
 			if(j == i-1){
 				acc_regout << captura[j];
-			}else if(j == 0){
+			}
+         
+         
+         else if(j == 0){
 				acc_regout << "Saldo em caixa: R$" << std::fixed << std::setprecision(2) << _saldo << std::endl;
-			}else if(j != 0 & j != i-1){
+			}
+         
+         else if(j != 0 & j != i-1){
 				acc_regout << captura[j] << std::endl;
 			}
-		}
+		
+      }
 	
       acc_regout << quantidade << "x " << nome << " (R$ " << valor << ")" << std::endl;
       acc_regout << "+" << std::endl;
       
       acc_regout.close();
+   
    }
+
 }
