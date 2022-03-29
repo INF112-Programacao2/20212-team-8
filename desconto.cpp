@@ -3,11 +3,9 @@
 #include <fstream>
 #include <cstring>
 
-Desconto::Desconto(){
+Desconto::Desconto(bool verifica){
     int n = 0;
     char comentario1[100];
-    char comentario2[100];
-    char *t;
     double valor;
 
     std::cout << "Verificando desconto..." << std::endl;
@@ -20,38 +18,33 @@ Desconto::Desconto(){
         enter_descont.getline(comentario1,100);
 
         if(n == 1){
-            t = strtok(comentario1,"#");		//Separação da string em tokens
-                            
-            while(t != NULL){
-                strcpy(comentario2, t);		//Captura do nome
-                t = strtok(NULL,"#");
-            }
-            valor = atoi(comentario2);
+            valor = atoi(comentario1);
             break;
         }
 
         n++;
     }
 
-    if(valor > 100){
+    if(valor > 100 && verifica == false){
+        std::cout << "Desconto de 20% " << "disponivel!" << std::endl;
         _desconto = 0.20;
     }
 
-    if(){
+    if(verifica == true){
+        std::cout << "E assim que a gente gosta, e a PREMIUM trazendo economias para voce!" << std::endl;
+        std::cout << "Desconto de 30% " << "preparado!" << std::endl;
         _desconto = 0.30;
     }
 
-    if(valor < 100 &&){
+    if(valor < 100 && verifica == false){
         std::cout << "Sinto muito! Mas o senhor(a) nao possui descontos disponiveis." << std::endl;
     }
 
 }
 
-void Desconto::descontar(){
+void Desconto::descontar(bool verifica){
     int n = 0;
     char comentario1[100];
-    char comentario2[100];
-    char *t;
     double valor;
 
     std::ifstream enter_descont;
@@ -63,13 +56,8 @@ void Desconto::descontar(){
         enter_descont.getline(comentario1,100);
 
         if(n == 1){
-            t = strtok(comentario1,"#");		//Separação da string em tokens
-                            
-            while(t != NULL){
-                strcpy(comentario2, t);		//Captura do nome
-                t = strtok(NULL,"#");
-            }
-            valor = atoi(comentario2);
+
+            valor = atoi(comentario1);
             break;
         }
 
@@ -80,7 +68,7 @@ void Desconto::descontar(){
 
     valor *= _desconto;
 
-    enter_descont("compra.txt",std::ios::in);
+    enter_descont.open("compra.txt",std::ios::in);
 
     char captura1[100][100];
 		int i = 0;

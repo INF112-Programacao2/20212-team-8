@@ -10,9 +10,9 @@ private:
     
  public:
 
-    Desconto();
+    Desconto(bool verifica);
 
-    void descontar();
+    void descontar(bool verifica);
 
 };
 
