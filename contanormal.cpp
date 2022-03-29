@@ -74,42 +74,74 @@ void Cnormal::alterardados(){
     std::cout << "(6) Email" << std::endl;
     std::cout << "(7) Endereco" << std::endl;
     std::cout << "(8) Senha" << std::endl;
-    std::cout << "Caso queira continuar alterando dados, digite 's', senao, digite 'n'" << std::endl;
 
     std::cin >> i;
+	std::cin.ignore();
 
     while(true){
         while(i < 1 || i > 8){
             std::cout << "Erro! Digite valores de 1 a 8 para definir uma alteracao" << std::endl;
             std::cin >> i;
+			std::cin.ignore();
         }
 
         if(i == 1){
-            std::cin >> _nome;
+			std::cout << "Digite o novo nome: ";
+            std::getline(std::cin, _nome);
+			
         }else if(i == 2){
-            std::cin >> _genero;
+			std::cout << "Digite o novo genero: ";
+            std::getline(std::cin, _genero);
+			
         }else if(i == 3){
-            std::cin >> _datanascimento;
+			std::cout << "Digite a nova data de nascimento: ";
+            std::getline(std::cin, _datanascimento);
+			
         }else if(i == 4){
-            std::cin >> _cpf;
+			std::cout << "Digite o novo cpf: ";
+            std::getline(std::cin, _cpf);
+			
         }else if(i == 5){
-            std::cin >> _telefone;
+			std::cout << "Digite o novo telefone: ";
+            std::getline(std::cin, _telefone);
+			
         }else if(i == 6){
-            std::cin >> _email;
+			std::cout << "Digite o novo email: ";
+            std::getline(std::cin, _email);
+
         }else if(i == 7){
-            std::cin >> _endereco;
+			std::cout << "Digite o novo endereco: ";
+            std::getline(std::cin, _endereco);
+			
         }else if(i == 8){
-            std::cin >> _senha;
+			std::cout << "Digite a nova senha: ";
+            std::getline(std::cin, _senha);
         } 
         
+		std::cout << "Caso queira continuar alterando dados, digite 's', senao, digite 'n'" << std::endl;
         std::cin >> op;
+		std::cin.ignore();
 
-        while(op != 's' || op != 'n'){
+        while(op != 's' && op != 'n'){
             std::cout << "Erro! Digite 's' para continuar alteracoes ou 'n' para encerrar alteracoes"<< std::endl;
             std::cin >> op;
+			std::cin.ignore();
         }
+		
+		
 
         if(op == 's'){
+			std::cout << "Deseja alterar qual dado? Digite a opcao correspondente." << std::endl;
+			std::cout << "(1) Nome" << std::endl;
+			std::cout << "(2) Genero" << std::endl;
+			std::cout << "(3) Data de nascimento" << std::endl;
+			std::cout << "(4) CPF" << std::endl;
+			std::cout << "(5) Telefone" << std::endl;
+			std::cout << "(6) Email" << std::endl;
+			std::cout << "(7) Endereco" << std::endl;
+			std::cout << "(8) Senha" << std::endl;
+			std::cin >> i;
+			std::cin.ignore();
             continue;
         }else if(op == 'n'){
             break;
@@ -131,58 +163,4 @@ void Cnormal::alterardados(){
     acc_change << _status << std::endl;
 
     acc_change.close();
-}
-
-bool Cnormal::virarpremium(){
-    char op1;
-    std::cout << "Deseja virar PREMIUM?" << std::endl;
-    std::cout << "Virando premium você garante desconto fixo de " << "30% " << " em todos os produtos da loja" << std::endl;
-    std::cout << "Isso tudo por apenas R$69.90" << std::endl;
-    std::cout << "Digite 's' para ser PREMIUM ou 'n' para cancelar a ativacao do PREMIUM." << std::endl;
-    std::cout << "Caso digite 's'. Sera efetivada a compra e a ativacao automaticas do PREMIUM" << std::endl;
-    std::cin >> op1;
-
-    while(op1 != 's' || op1 != 'n'){
-        std::cout << "Erro! Digite 's' para ser PREMIUM ou 'n' para cancelar a ativacao do PREMIUM" << std::endl;
-        std::cin >> op1;
-    }
-
-    if(op1 == 's'){
-        std::string nome;
-        std::string valor;
-
-        std::ifstream acc_check1;
-        std::ofstream acc_out1;
-        std::ifstream acc_entrada;
-        std::ofstream acc_saida;
-
-        acc_check1.open("pedido.txt",std::ios_base::app);
-        acc_out1.open("pedido.txt",std::ios::out);
-
-        acc_out1 << "P10" << std::endl;
-        acc_out1 << _nome << std::endl;
-        acc_out1 << "Ativacao conta PREMIUM" << std::endl;
-        acc_out1 << "69.90" << std::endl;
-
-        acc_out1.close();
-
-        acc_entrada.open("recibo.txt",std::ios_base::app);
-        acc_saida.open("recibo.txt",std::ios::in);
-
-        acc_saida << "Olá ";
-        acc_saida << _nome << std::endl;
-        acc_saida << "Obrigado por comprar na nossa loja." << std::endl;
-        acc_saida << "Numero do pedido: " << "P10" << std::endl;
-        acc_saida << "Nome do produto: " << "Ativacao conta PREMIUM" << std::endl;
-        acc_saida << "Preco do produto: " << "R$69.90" << std::endl;
-
-        acc_saida.close();
-
-        return true;
-
-    }else if(op1 == 'n'){
-        return false;
-    }
-
-    return 0;
 }

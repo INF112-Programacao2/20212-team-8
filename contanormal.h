@@ -20,7 +20,6 @@ public:
     Cnormal();
     virtual void conta();
     void alterardados();
-    bool virarpremium();
 
 };
 
