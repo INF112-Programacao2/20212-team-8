@@ -12,6 +12,7 @@ private:
     std::string _email;
     std::string _endereco;
     std::string _senha;
+    std::string _status;
     std::string _nomeproduto;
     std::string _codigoproduto;
     std::string _precoproduto;

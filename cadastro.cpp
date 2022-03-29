@@ -38,6 +38,7 @@ Cadastro::Cadastro(){
 	std::getline(std::cin, _email); 
 	std::getline(std::cin, _endereco);
 	std::getline(std::cin, _senha);
+	_status = "Normal";
    
     std::string arquivot1("conta.txt");
     std::ifstream acc_entrada;
@@ -56,6 +57,7 @@ Cadastro::Cadastro(){
 	acc_saida << _email << std::endl;  
 	acc_saida << _endereco << std::endl;
 	acc_saida << _senha << std::endl;
+	acc_saida << _status << std::endl;
     
     acc_saida.close();
    }
