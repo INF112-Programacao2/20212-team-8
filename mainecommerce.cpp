@@ -10,8 +10,6 @@
 #include "caixa.cpp"
 #include "desconto.h"
 #include "desconto.cpp"
-#include "estoque.h"
-#include "estoque.cpp"
 #include "conta.h"
 #include "contanormal.h"
 #include "contanormal.cpp"
