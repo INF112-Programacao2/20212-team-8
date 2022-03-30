@@ -12,7 +12,7 @@ Cadastro::Cadastro(){
    std::cin >> option;
    int verifica = 0;
 
-   while(verifica == 0){
+   while(verifica == 0){	//Verifcador para caso de digitar opcao invalida
 	
 		if(option == 'S' || option == 's'){
 			verifica++;
@@ -32,11 +32,11 @@ Cadastro::Cadastro(){
    
     }
 
-   if(option == 'S' || option == 's'){
+   if(option == 'S' || option == 's'){	//Sai do construtor
 	  
    }
    
-    else if(option == 'N' || option == 'n'){
+    else if(option == 'N' || option == 'n'){//Cria conta
 	  char option1;   
 	   
 	  std::cin.ignore();
@@ -89,14 +89,14 @@ Cadastro::Cadastro(){
    
    
        else if(option1 == 'N' || option1 == 'n'){
-	  _status = "normal";
+	 	 _status = "normal";
        }
    
        std::string arquivot1("conta.txt");
        std::ifstream acc_entrada;
        std::ofstream acc_saida;
 
-       acc_entrada.open(arquivot1,std::ios_base::app);
+       acc_entrada.open(arquivot1,std::ios_base::app);	//Cria o conta.txt com os dados do cliente
 	
 	   acc_saida.open(arquivot1,std::ios::out);
 	
@@ -133,9 +133,9 @@ void Cadastro::cadastrarproduto(){
 	std::ifstream prod_entrada;
 	std::ofstream prod_saida;
 	
-	prod_entrada.open("produtos.txt",std::ios::in);
+	prod_entrada.open("produtos.txt",std::ios::in); //Inicializa produtos.txt
 	
-	if(!prod_entrada){	
+	if(!prod_entrada){	//Caso ainda nao tenha sido registrado nenhum produto, cria um produto
 
 		prod_entrada.open("produtos.txt",std::ios_base::app);
 		
@@ -153,7 +153,7 @@ void Cadastro::cadastrarproduto(){
 	}
 	
 	
-	else{
+	else{	//Caso tenha ja um produto, cria outro depois do produto ja cadastrado
 		char captura1[100][100];
 		int i = 0;
 		
@@ -203,17 +203,17 @@ bool Cadastro::login(){
 
     std::ifstream acc_check;
 
-	if(email == "admin@adm.com" && senha == "admin4012"){
+	if(email == "admin@adm.com" && senha == "admin4012"){	//Se esses dados foram digitados
 		std::cout << "Login de conta ADM realizado com sucesso!" << std::endl;
 		std::cout << "Transferindo para a pagina de gerenciamento da loja..." << std::endl;
-		return false;
+		return false;	//Transfere para tela de usuario do administrador
 	}
 
     acc_check.open("conta.txt",std::ios::in);
 	
 		
 	for(int i = 0; i < 8; i++){
-		if(email == "admin@adm.com" && senha == "admin4012"){
+		if(email == "admin@adm.com" && senha == "admin4012"){	//Repeticao para o caso de ter digitado a conta de adm de forma errada
 			std::cout << "Login de conta ADM realizado com sucesso!" << std::endl;
 			std::cout << "Transferindo para a pagina de gerenciamento da loja..." << std::endl;
 			return false;
@@ -221,7 +221,7 @@ bool Cadastro::login(){
 
 		acc_check.getline(captura,200);
 
-		if(i == 5){
+		if(i == 5){	//Captura email e verifica se e o correto cadastrado na loja
 			
 			if(email != captura){
 				acc_vrfy = false;
@@ -230,7 +230,7 @@ bool Cadastro::login(){
 		}
 		
 		
-		if(i == 7){
+		if(i == 7){ //Captura senha e verifica se e a correta cadastrada na loja
 	
 			if(senha != captura && acc_vrfy != false){
 				acc_vrfy = false;
@@ -239,22 +239,22 @@ bool Cadastro::login(){
 		}
 		
 		
-		if(i == 7 && acc_vrfy == true){
+		if(i == 7 && acc_vrfy == true){	//Apos confirmar senha, verifica se os dados sao corretos atraves do booleano
 			std::cout << "Login realizado com sucesso!" << std::endl;
 			std::cout << "Transferindo para a pagina inicial..." << std::endl;
 			acc_check.close();
-			return true;
+			return true;	//Transfere para a tela de usuario do cliente
 		}
 		
 		
-		else if(i == 7 && acc_vrfy != true){
+		else if(i == 7 && acc_vrfy != true){	//Caso onde apos confirmar email e senha, encontram-se invalidos os dados
 			std::cout << "Email ou senha incorretos! Tente novamente." << std::endl;
-			acc_check.close();
+			acc_check.close();	//Fecha o arquivo para abertura de um novo e nova entrada de dados
 			std::cin >> email;
 			std::cin >> senha;
 			i = -1;
 			acc_vrfy = true;
-			acc_check.open("conta.txt",std::ios::in);
+			acc_check.open("conta.txt",std::ios::in);	//Nova abertura do conta.txt
 		}
 	
 	}
