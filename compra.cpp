@@ -192,7 +192,7 @@ bool Compra::comprar(){
 
 					while(quant < 1 || quant > quantidade){	
 					
-						std::cout << "Erro! Digite um valor valido de 1 a " << quantidade << ".";
+						std::cout << "Erro! Digite um valor valido de 1 a " << quantidade << "." << std::endl;
 						std::cin >> quant;
 						
 					}

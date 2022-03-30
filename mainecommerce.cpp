@@ -101,7 +101,7 @@ int main(){
 					Cpremium cn2;
 					
 					cp2.exibirjogos();
-					cp2.comprar();
+					verf1 = cp2.comprar();
 					
 					if(verf1 == true){
 						Desconto d2(status);
