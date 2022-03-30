@@ -124,7 +124,7 @@ void Caixa::registro(){
 				acc_regout << "Saldo em caixa: R$" << std::fixed << std::setprecision(2) << _saldo << std::endl;   //Saida atualizada no registro atualizado
 			}
          
-         else if(j != 0 & j != i-1){   //Leitura geral
+         else if(j != 0 && j != i-1){   //Leitura geral
 				acc_regout << captura[j] << std::endl; //Saida geral no registro
 			}
 		
