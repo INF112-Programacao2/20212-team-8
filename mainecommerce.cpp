@@ -10,8 +10,6 @@
 #include "caixa.cpp"
 #include "desconto.h"
 #include "desconto.cpp"
-#include "estoque.h"
-#include "estoque.cpp"
 #include "conta.h"
 #include "contanormal.h"
 #include "contanormal.cpp"
@@ -36,16 +34,25 @@ int main(){
 			std::cin.ignore();
 			
 			while(verifica == 0){
+				
+				
 				if(option == 'a'){
 					verifica++;
-				}else if(option == 'b'){
+				}
+				
+				
+				else if(option == 'b'){
 					verifica++;
-				}else if(verifica == 0){
+				}
+				
+				
+				else if(verifica == 0){
 					std::cout << "Erro!Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
 					std::cout << "Ver e comprar jogos (a); Ver minha conta (b)" << std::endl;
 					std::cin >> option;
 					std::cin.ignore();
 				}
+			
 			}
 			
 			if(option == 'a'){
@@ -76,12 +83,18 @@ int main(){
 						
 						cp1.pedido();
 						cp1.emitirrecibo();
-					}else{
+					}
+					
+					
+					else{
 						
 					}
 					
 				
-				}else if(status == "premium"){
+				}
+				   
+				   
+				else if(status == "premium"){
 					bool verf1;
 					
 					Compra cp2;
@@ -90,20 +103,27 @@ int main(){
 					cp2.exibirjogos();
 					cp2.comprar();
 					
-					if(verf == true){
+					if(verf1 == true){
 						Desconto d2(status);
 						d2.descontar();
 						
 						cp2.pedido();
 						cp2.emitirrecibo();
-					}else{
+					}
+					
+					
+					else{
 						
 					}
 				}
 				
 				status_check.close();
 				
-			}else if(option == 'b'){
+			}
+			
+			
+			else if(option == 'b'){
+				
 				char captura1[100];
 				std::string status;
 				std::ifstream status_check;
@@ -131,11 +151,18 @@ int main(){
 					std::cin.ignore();
 						
 						while(verifica1 == 0){
+							
 							if(option2 == 'a'){
 								verifica1++;
-							}else if(option2 == 'b'){
+							
+							}
+							
+							else if(option2 == 'b'){
 								verifica1++;
-							}else if(verifica1 == 0){
+							
+							}
+							
+							else if(verifica1 == 0){
 								std::cout << "Erro!Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
 								std::cout << "Ver todas as informacoes de minha conta (a); Alterar dados de minha conta (b)" << std::endl;
 								std::cin >> option2;
@@ -146,11 +173,18 @@ int main(){
 					
 						if(option2 == 'a'){
 							cn1.conta();
-						}else if(option2 == 'b'){
+						
+						}
+						
+						
+						else if(option2 == 'b'){
 							cn1.alterardados();
 						}
 				
-				}else if(status == "premium"){
+				}
+				
+				
+				else if(status == "premium"){
 					Cpremium cpm1;
 					
 					char option3;
@@ -165,9 +199,15 @@ int main(){
 						while(verifica2 == 0){
 							if(option3 == 'a'){
 								verifica2++;
-							}else if(option3 == 'b'){
+							}
+							
+							
+							else if(option3 == 'b'){
 								verifica2++;
-							}else if(verifica2 == 0){
+							}
+							
+							
+							else if(verifica2 == 0){
 								std::cout << "Erro!Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
 								std::cout << "Ver todas as informacoes de minha conta (a); Alterar dados de minha conta (b)" << std::endl;
 								std::cin >> option3;
@@ -178,8 +218,13 @@ int main(){
 						
 					if(option3 == 'a'){	
 						cpm1.conta();
-					}else if(option3 == 'b'){
+					}
+					
+					
+					else if(option3 == 'b'){
+						
 						cpm1.alterardados1();
+					
 					}
 				}
 			}
@@ -190,20 +235,30 @@ int main(){
 			while(verifica == 0){
 				if(option == 's'){
 					verifica++;
-				}else if(option == 'n'){
+				}
+				
+				
+				else if(option == 'n'){
 					verifica++;
-				}else if(verifica == 0){
+				}
+				
+				else if(verifica == 0){
 					std::cout << "Erro!Deseja continuar realizando operacoes? Digite 's' ou 'n':" << std::endl;
 					std::cin >> option;
 				}
+			
 			}
 			
 			if(option == 's'){
 				continue;
-			}else if(option == 'n'){
+			}
+			
+			
+			else if(option == 'n'){
 				std::cout << "Volte sempre! :)" << std::endl;
 				break;
 			}
+		
 		}
 		
 	}
@@ -214,21 +269,25 @@ int main(){
 		
 		while(true){
 			std::cout << "Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
-			std::cout << "Ver o caixa (a); Ver o estoque (b); Cadastrar produto (c)" << std::endl;
+			std::cout << "Ver o caixa (a); Cadastrar produto (b)" << std::endl;
 			std::cin >> option2;
 			
 			while(verifica2 == 0){
 				if(option2 == 'a'){
 					verifica2++;
-				}else if(option2 == 'b'){
+				}
+				
+				else if(option2 == 'b'){
 					verifica2++;
-				}else if(option2 == 'c'){
-					verifica2++;
-				}else if(verifica2 == 0){
+				}
+				
+				
+				else if(verifica2 == 0){
 					std::cout << "Erro!Digite a opcao correspondente ao acesso que voce deseja realizar:" << std::endl;
-					std::cout << "Ver o caixa (a); Ver o estoque (b)" << std::endl;
+					std::cout << "Ver o caixa (a); Cadastrar produto (b)" << std::endl;
 					std::cin >> option2;
 				}
+			
 			}
 			
 			if(option2 == 'a'){
@@ -237,11 +296,10 @@ int main(){
 				cx.registro();
 				
 				
-			}else if(option2 == 'b'){
-				Estoque etq;
-				
-				etq.fluxoproduto();
-			}else if(option2 == 'c'){
+			}
+			
+			
+			else if(option2 == 'c'){
 				c1.cadastrarproduto();
 			}
 			
@@ -251,20 +309,30 @@ int main(){
 			while(verifica2 == 0){
 				if(option2 == 's'){
 					verifica2++;
-				}else if(option2 == 'n'){
+				}
+				
+				else if(option2 == 'n'){
 					verifica2++;
-				}else if(verifica2 == 0){
+				}
+				
+				
+				else if(verifica2 == 0){
 					std::cout << "Erro! Deseja continuar realizando operacoes? Digite 's' ou 'n':";
 					std::cin >> option2;
 				}
+			
 			}
 			
 			if(option2 == 's'){
 				continue;
-			}else if(option2 == 'n'){
+			}
+			
+			
+			else if(option2 == 'n'){
 				std::cout << "Ate logo ADM! :D" << std::endl;
 				break;
 			}
+		
 		}
 		
 		

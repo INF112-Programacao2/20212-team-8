@@ -16,85 +16,104 @@ Cadastro::Cadastro(){
 	
 		if(option == 'S' || option == 's'){
 			verifica++;
-		}else if(option == 'N' || option == 'n'){
+		}
+		
+		else if(option == 'N' || option == 'n'){
 			verifica++;
-		}else if(verifica == 0){
+		}
+		
+		
+		else if(verifica == 0){
 			std::cout << "Opcao invalida!" << std::endl;
 			std::cout << "Ja possui conta? Se sim, digite 'S' para ir para o login." << std::endl;
 			std::cout << "Se nao, digite 'N' para criar uma conta." << std::endl;
 			std::cin >> option;
 		}
-   }
+   
+    }
 
    if(option == 'S' || option == 's'){
 	  
-   }else if(option == 'N' || option == 'n'){
-	char option1;   
+   }
+   
+    else if(option == 'N' || option == 'n'){
+	  char option1;   
 	   
-	std::cin.ignore();
-	std::cout << "Digite os dados correspondentes:" << std::endl;
-	std::cout << "Nome: ";
-	std::getline(std::cin, _nome);
-	std::cout << "Genero: ";
-	std::getline(std::cin,_genero);
-	std::cout << "Data de nascimento: ";
-	std::getline(std::cin, _datanascimento);
-	std::cout << "CPF: ";
-	std::getline(std::cin, _cpf);
-	std::cout << "Telefone: ";
-	std::getline(std::cin, _telefone); 
-	std::cout << "Email: ";
-	std::getline(std::cin, _email); 
-	std::cout << "Endereco: ";
-	std::getline(std::cin, _endereco);
-	std::cout << "Senha: ";
-	std::getline(std::cin, _senha);
-	std::cout << "Deseja ser premium? 'S' ou 'N'" << std::endl;
-	std::cin >> option1;
+	  std::cin.ignore();
+	  std::cout << "Digite os dados correspondentes:" << std::endl;
+	  std::cout << "Nome: ";
+	  std::getline(std::cin, _nome);
+	  std::cout << "Genero: ";
+	  std::getline(std::cin,_genero);
+	  std::cout << "Data de nascimento: ";
+	  std::getline(std::cin, _datanascimento);
+	  std::cout << "CPF: ";
+	  std::getline(std::cin, _cpf);
+	  std::cout << "Telefone: ";
+	  std::getline(std::cin, _telefone); 
+	  std::cout << "Email: ";
+	  std::getline(std::cin, _email); 
+	  std::cout << "Endereco: ";
+	  std::getline(std::cin, _endereco);
+	  std::cout << "Senha: ";
+	  std::getline(std::cin, _senha);
+	  std::cout << "Deseja ser premium? 'S' ou 'N'" << std::endl;
+	  std::cin >> option1;
 	
-	while(verifica == 0){
+	    while(verifica == 0){
 	
-		if(option1 == 'S' || option1 == 's'){
+		   if(option1 == 'S' || option1 == 's'){
 			verifica++;
-		}else if(option1 == 'N' || option1 == 'n'){
+		   }
+		
+		
+		    else if(option1 == 'N' || option1 == 'n'){
 			verifica++;
-		}else if(verifica == 0){
+		    }
+		
+		
+		    else if(verifica == 0){
 			std::cout << "Opcao invalida!" << std::endl;
 			std::cout << "Deseja ser premium? 'S' ou 'N'" << std::endl;
 			
 			std::cin >> option1;
-		}
-   }
+		    }
     
-   std::cin.ignore();
+	    }
+    
+       std::cin.ignore();
    
-   if(option1 == 'S' || option1 == 's'){
-	  _status = "premium";
-   }else if(option1 == 'N' || option1 == 'n'){
+       if(option1 == 'S' || option1 == 's'){
+	      _status = "premium";
+        }
+   
+   
+       else if(option1 == 'N' || option1 == 'n'){
 	  _status = "normal";
-   }
+       }
    
-    std::string arquivot1("conta.txt");
-    std::ifstream acc_entrada;
-    std::ofstream acc_saida;
+       std::string arquivot1("conta.txt");
+       std::ifstream acc_entrada;
+       std::ofstream acc_saida;
 
-    acc_entrada.open(arquivot1,std::ios_base::app);
+       acc_entrada.open(arquivot1,std::ios_base::app);
 	
-	acc_saida.open(arquivot1,std::ios::out);
+	   acc_saida.open(arquivot1,std::ios::out);
 	
 	
-    acc_saida << _nome << std::endl;
-    acc_saida << _genero << std::endl;
-	acc_saida << _datanascimento << std::endl;
-	acc_saida << _cpf << std::endl;
-	acc_saida << _telefone << std::endl;
-	acc_saida << _email << std::endl;  
-	acc_saida << _endereco << std::endl;
-	acc_saida << _senha << std::endl;
-	acc_saida << _status << std::endl;
+        acc_saida << _nome << std::endl;
+        acc_saida << _genero << std::endl;
+	    acc_saida << _datanascimento << std::endl;
+	    acc_saida << _cpf << std::endl;
+	    acc_saida << _telefone << std::endl;
+	    acc_saida << _email << std::endl;  
+	    acc_saida << _endereco << std::endl;
+	    acc_saida << _senha << std::endl;
+	    acc_saida << _status << std::endl;
     
-    acc_saida.close();
-   }
+        acc_saida.close();
+    }
+
 }
 
 void Cadastro::cadastrarproduto(){
@@ -131,7 +150,10 @@ void Cadastro::cadastrarproduto(){
 		
 		prod_saida.close();
 	
-	}else{
+	}
+	
+	
+	else{
 		char captura1[100][100];
 		int i = 0;
 		
@@ -148,9 +170,13 @@ void Cadastro::cadastrarproduto(){
 		for(int j = 0; j < i; j++){
 			if(j == i-1){
 				prod_saida << captura1[j];
-			}else{
+			}
+			
+			
+			else{
 				prod_saida << captura1[j] << std::endl;
 			}
+		
 		}
 		
 		prod_saida << _nomeproduto << std::endl;
@@ -192,6 +218,7 @@ bool Cadastro::login(){
 			std::cout << "Transferindo para a pagina de gerenciamento da loja..." << std::endl;
 			return false;
 		}
+
 		acc_check.getline(captura,200);
 
 		if(i == 5){
@@ -200,18 +227,27 @@ bool Cadastro::login(){
 				acc_vrfy = false;
 			}
 
-		}if(i == 7){
+		}
+		
+		
+		if(i == 7){
 	
 			if(senha != captura && acc_vrfy != false){
 				acc_vrfy = false;
 			}
 			
-		}if(i == 7 && acc_vrfy == true){
+		}
+		
+		
+		if(i == 7 && acc_vrfy == true){
 			std::cout << "Login realizado com sucesso!" << std::endl;
 			std::cout << "Transferindo para a pagina inicial..." << std::endl;
 			acc_check.close();
 			return true;
-		}else if(i == 7 && acc_vrfy != true){
+		}
+		
+		
+		else if(i == 7 && acc_vrfy != true){
 			std::cout << "Email ou senha incorretos! Tente novamente." << std::endl;
 			acc_check.close();
 			std::cin >> email;
@@ -220,6 +256,7 @@ bool Cadastro::login(){
 			acc_vrfy = true;
 			acc_check.open("conta.txt",std::ios::in);
 		}
+	
 	}
 
 	return 0;

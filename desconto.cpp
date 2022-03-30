@@ -15,7 +15,8 @@ Desconto::Desconto(std::string verifica){
     enter_descont.open("compra.txt",std::ios::in);
 
     while(true){
-        enter_descont.getline(comentario1,100);
+        
+		enter_descont.getline(comentario1,100);
 
         if(n == 2){
             valor = atof(comentario1);
@@ -58,6 +59,7 @@ void Desconto::descontar(){
 		enter_descont.open("compra.txt",std::ios::in);
 
 		while(true){
+			
 			if(enter_descont.eof()){
 				break;
 			}
@@ -70,11 +72,12 @@ void Desconto::descontar(){
 			}
 
 			n++;
+		
 		}
 
 		enter_descont.close();
 
-		valor -= (valor*_desconto);
+		valor -= (valor*_desconto);                         // efetuando o desconto
 		
 		out_descont.open("compra.txt",std::ios::out);
 		
@@ -82,14 +85,19 @@ void Desconto::descontar(){
 			if(i == n-2){
 				break;
 			}
+
 			out_descont << comentario1[i] << std::endl;
+		
 		}
 		
 		out_descont << valor << std::endl;
 		
 		out_descont.close();
 		
-	}else{
+	}
+	
+	
+	else{
 		
 	}
 

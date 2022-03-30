@@ -3,7 +3,6 @@
 #include <string>
 
 class Conta {
-private:
 
 public:
 
