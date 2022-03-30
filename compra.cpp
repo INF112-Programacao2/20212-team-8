@@ -344,13 +344,13 @@ void Compra::emitirrecibo(){
 			
         }
 		
-		if(h1 == 4){
+		if(h1 == 3){
 			
             quantidade = comentario1;
 			
         }
 
-		if(h1 == 5){
+		if(h1 == 4){
 
 			preco = comentario1;
 
