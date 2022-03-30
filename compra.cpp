@@ -368,7 +368,7 @@ void Compra::emitirrecibo(){
 	std::cout << "Numero do pedido: " << numeropedido << std::endl;
 	std::cout << "Nome do produto: " << nomepedido << std::endl;
 	std::cout << "Quantidade: " << quantidade << "x" << std::endl;
-	std::cout << "Preco do produto: " << precoproduto << std::endl;
+	std::cout << "Preco do produto: " << preco << std::endl;
 
     acc_entrada.open("recibo.txt",std::ios_base::app);	//Criacao do recibo.txt
     acc_saida.open("recibo.txt",std::ios::in);	//Inicializacao da saida do recibo.txt
@@ -380,7 +380,7 @@ void Compra::emitirrecibo(){
     acc_saida << "Numero do pedido: " << numeropedido << std::endl;
     acc_saida << "Nome do produto: " << nomepedido << std::endl;
 	acc_saida << "Quantidade: " << quantidade << "x" << std::endl;
-    acc_saida << "Preco do produto: " << precoproduto << std::endl;
+    acc_saida << "Preco do produto: R$" << preco << std::endl;
 
     acc_saida.close();
 
