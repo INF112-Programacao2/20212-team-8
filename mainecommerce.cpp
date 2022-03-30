@@ -33,7 +33,7 @@ int main(){
 			std::cin >> option;
 			std::cin.ignore();
 			
-			while(verifica == 0){
+			while(verifica == 0){	//While para verificacao de opcao
 				
 				
 				if(option == 'a'){
@@ -55,7 +55,7 @@ int main(){
 			
 			}
 			
-			if(option == 'a'){
+			if(option == 'a'){	//Aba de ver e comprar jogos
 				char captura[100];
 				std::string status;
 				std::ifstream status_check;
@@ -65,12 +65,12 @@ int main(){
 				for(int i = 0; i < 9; i++){
 					status_check.getline(captura,100);
 					
-					if(i == 8){
+					if(i == 8){	//Captura o tipo de conta
 						status = captura;
 					}
 				}
 				
-				if(status == "normal"){
+				if(status == "normal"){		//Se for conta normal
 					bool verf;
 					Compra cp1;
 					
@@ -94,7 +94,7 @@ int main(){
 				}
 				   
 				   
-				else if(status == "premium"){
+				else if(status == "premium"){	//Se for conta premium
 					bool verf1;
 					
 					Compra cp2;
@@ -122,7 +122,7 @@ int main(){
 			}
 			
 			
-			else if(option == 'b'){
+			else if(option == 'b'){	//Ver informacoes e alterar dados de contas
 				
 				char captura1[100];
 				std::string status;
@@ -150,7 +150,7 @@ int main(){
 					std::cin >> option2;
 					std::cin.ignore();
 						
-						while(verifica1 == 0){
+						while(verifica1 == 0){//While para verificar opcoes
 							
 							if(option2 == 'a'){
 								verifica1++;
@@ -171,13 +171,13 @@ int main(){
 						}
 					
 					
-						if(option2 == 'a'){
+						if(option2 == 'a'){	//Se opcao for ver informacoes da conta
 							cn1.conta();
 						
 						}
 						
 						
-						else if(option2 == 'b'){
+						else if(option2 == 'b'){	//Se opcao for alterar dados
 							cn1.alterardados();
 						}
 				
@@ -196,7 +196,7 @@ int main(){
 						std::cin >> option3;
 						std::cin.ignore();
 						
-						while(verifica2 == 0){
+						while(verifica2 == 0){//While para verificar opcoes
 							if(option3 == 'a'){
 								verifica2++;
 							}
@@ -216,12 +216,12 @@ int main(){
 						}
 					
 						
-					if(option3 == 'a'){	
+					if(option3 == 'a'){	//Se for ver informacoes
 						cpm1.conta();
 					}
 					
 					
-					else if(option3 == 'b'){
+					else if(option3 == 'b'){	//Se for alterar dados
 						
 						cpm1.alterardados1();
 					
@@ -232,7 +232,7 @@ int main(){
 			std::cout << "Deseja continuar realizando operacoes? Digite 's' ou 'n':";
 			std::cin >> option;
 			
-			while(verifica == 0){
+			while(verifica == 0){//While para verificar opcoes
 				if(option == 's'){
 					verifica++;
 				}
@@ -249,12 +249,12 @@ int main(){
 			
 			}
 			
-			if(option == 's'){
+			if(option == 's'){	//Continua fazendo operacoes
 				continue;
 			}
 			
 			
-			else if(option == 'n'){
+			else if(option == 'n'){	//Termina o programa
 				std::cout << "Volte sempre! :)" << std::endl;
 				break;
 			}
@@ -272,7 +272,7 @@ int main(){
 			std::cout << "Ver o caixa (a); Cadastrar produto (b)" << std::endl;
 			std::cin >> option2;
 			
-			while(verifica2 == 0){
+			while(verifica2 == 0){//While para verificar opcoes
 				if(option2 == 'a'){
 					verifica2++;
 				}
@@ -290,7 +290,7 @@ int main(){
 			
 			}
 			
-			if(option2 == 'a'){
+			if(option2 == 'a'){	//Vai para o registro
 				Caixa cx;
 				
 				cx.registro();
@@ -299,14 +299,14 @@ int main(){
 			}
 			
 			
-			else if(option2 == 'c'){
+			else if(option2 == 'c'){	//Cadastra produto
 				c1.cadastrarproduto();
 			}
 			
 			std::cout << "Deseja continuar realizando operacoes? Digite 's' ou 'n':";
 			std::cin >> option2;
 			
-			while(verifica2 == 0){
+			while(verifica2 == 0){	//While para verificar opcoes
 				if(option2 == 's'){
 					verifica2++;
 				}
@@ -323,12 +323,12 @@ int main(){
 			
 			}
 			
-			if(option2 == 's'){
+			if(option2 == 's'){	//Continua operacoes
 				continue;
 			}
 			
 			
-			else if(option2 == 'n'){
+			else if(option2 == 'n'){	//Termina o programa
 				std::cout << "Ate logo ADM! :D" << std::endl;
 				break;
 			}
