@@ -299,7 +299,7 @@ int main(){
 			}
 			
 			
-			else if(option2 == 'c'){	//Cadastra produto
+			else if(option2 == 'b'){	//Cadastra produto
 				c1.cadastrarproduto();
 			}
 			
