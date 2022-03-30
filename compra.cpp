@@ -313,41 +313,48 @@ void Compra::emitirrecibo(){
     std::ofstream acc_saida;
     
 	std::string numeropedido;
-    std::string nome;
     std::string nomepedido;
     std::string precoproduto;
+	std::string quantidade;
+	std::string preco;
     
 	int h1 = 0;
 
     acc_entrada.open("pedido.txt",std::ios::in); //Le o pedido.txt
 
-    while(h1 < 4){ //Captura de valores
+    while(h1 < 5){ //Captura de valores
 		
         acc_entrada.getline(comentario1,100);
 
-        if(h1 == 0){
+		if(h == 0){
+
+			numeropedido = comentario1;
+
+		}
+
+        if(h1 == 1){
 			
            _cliente = comentario1;
 		   
         }
 		
-		if(h1 == 1){
-			
-            precoproduto = comentario1;
-			
-        }
-		
 		if(h1 == 2){
 			
-            nomepedido = comentario1;
+           nomepedido = comentario1;
 			
         }
 		
-		if(h1 == 3){
+		if(h1 == 4){
 			
-            numeropedido = comentario1;
+            quantidade = comentario1;
 			
         }
+
+		if(h1 == 5){
+
+			preco = comentario1;
+
+		}
 		
         h1++;
     }
@@ -355,20 +362,24 @@ void Compra::emitirrecibo(){
     acc_entrada.close();
 	
 	//Imprime o recibo da compra na tela para o cliente
+	std::cout << "::Recibo::" << std::endl;
 	std::cout << "Ola " << _cliente << std::endl;
 	std::cout << "Obrigado por comprar na nossa loja." << std::endl;
 	std::cout << "Numero do pedido: " << numeropedido << std::endl;
 	std::cout << "Nome do produto: " << nomepedido << std::endl;
+	std::cout << "Quantidade: " << quantidade << "x" << std::endl;
 	std::cout << "Preco do produto: " << precoproduto << std::endl;
 
     acc_entrada.open("recibo.txt",std::ios_base::app);	//Criacao do recibo.txt
     acc_saida.open("recibo.txt",std::ios::in);	//Inicializacao da saida do recibo.txt
 
+	acc_saida << "::Recibo::" << std::endl;
     acc_saida << "Ola ";
     acc_saida << _cliente << std::endl;
     acc_saida << "Obrigado por comprar na nossa loja." << std::endl;
     acc_saida << "Numero do pedido: " << numeropedido << std::endl;
     acc_saida << "Nome do produto: " << nomepedido << std::endl;
+	acc_saida << "Quantidade: " << quantidade << "x" << std::endl;
     acc_saida << "Preco do produto: " << precoproduto << std::endl;
 
     acc_saida.close();
