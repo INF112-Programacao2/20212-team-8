@@ -356,7 +356,7 @@ void Compra::emitirrecibo(){
 	
 	//Imprime o recibo da compra na tela para o cliente
 	std::cout << "Ola " << _cliente << std::endl;
-	std::cout << "Obrigado por comprar na nossa loja."
+	std::cout << "Obrigado por comprar na nossa loja." << std::endl;
 	std::cout << "Numero do pedido: " << numeropedido << std::endl;
 	std::cout << "Nome do produto: " << nomepedido << std::endl;
 	std::cout << "Preco do produto: " << precoproduto << std::endl;
