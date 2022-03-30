@@ -326,7 +326,7 @@ void Compra::emitirrecibo(){
 		
         acc_entrada.getline(comentario1,100);
 
-		if(h == 0){
+		if(h1 == 0){
 
 			numeropedido = comentario1;
 
